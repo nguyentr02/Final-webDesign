@@ -1,3 +1,11 @@
+<?php
+
+  session_start(); /* Starts the session */
+
+  
+  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,6 +42,7 @@
   </style>
 
   <body>
+    <form>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="">Navbar</a>
@@ -52,10 +61,10 @@
           <ul class="navbar-nav">
             
             <li class="nav-item">
-              <a class="nav-link" href="/src/page/product.html">Product</a>
+              <a class="nav-link" href="/src/page/product.php">Product</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/src/page/login.html">Login</a>
+              <a class="nav-link" href="/src/page/login.php">Login</a>
             </li>
           </ul>
         </div>
@@ -246,6 +255,7 @@
         </div>
       </div>
     </div>
+    </form>
 
     <script>
       $(document).ready(function () {
