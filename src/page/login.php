@@ -2,8 +2,27 @@
 
   session_start(); /* Starts the session */
 
-  
-  
+   require_once 'db_conn.php';
+
+
+      if(isset($_POST['login'])){
+        $useraccount = $_POST['useraccount'];
+        $userpassword = $_POST['userpassword']; 
+
+        $sql = "SELECT * FROM tblLogin WHERE useraccount='$useraccount' AND userpassword='$userpassword'";
+
+        $result = mysqli_query($conn,$sql);
+
+        $row = mysqli_fetch_assoc($result);
+
+        if($row){
+          //  Chuyen den trang admin
+          header("Location:product.php");
+        }
+        else {
+          echo '<p style="color:red">You are not admin!</p>';
+        }
+      }  
 ?>
 
 <!DOCTYPE html>
@@ -59,19 +78,16 @@
 							<h1 class="fs-4 card-title fw-bold mb-4">Admin Login</h1>
 							<form method="POST" class="needs-validation" novalidate="" autocomplete="off">
 								<div class="mb-3">
-									<label class="mb-2 text-muted" for="email">E-Mail </label>
-									<input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+									<label class="mb-2 text-muted" >Account </label>
+									<input id="email" type="text" class="form-control" name="useraccount" value="" required autofocus>
 									
 								</div>
 
 								<div class="mb-3">
 									<div class="mb-2 w-100">
-										<label class="text-muted" for="password">Password</label>
-										<a href="forgot.html" class="float-end">
-											Forgot Password?
-										</a>
+										<label class="text-muted" >Password</label>
 									</div>
-									<input id="password" type="password" class="form-control" name="password" required>
+									<input id="password" type="password" class="form-control" name="userpassword" required>
 								    <div class="invalid-feedback">
 								    	Password is required
 							    	</div>
@@ -79,7 +95,7 @@
 
 								<div class="d-flex align-items-center">
 									
-									<button type="submit" class="btn btn-primary ">
+									<button type="submit" class="btn btn-primary " name="login">
 										Login
 									</button>
 								</div>
